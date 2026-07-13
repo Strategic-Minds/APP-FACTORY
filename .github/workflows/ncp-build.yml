@@ -1,0 +1,35 @@
+name: NCP Contractor App Build
+
+on:
+  push:
+    branches: [main, build/ncp-contractor-app-v2]
+    paths:
+      - 'apps/ncp-contractor-app/**'
+      - '.github/workflows/ncp-build.yml'
+  pull_request:
+    paths:
+      - 'apps/ncp-contractor-app/**'
+      - '.github/workflows/ncp-build.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: apps/ncp-contractor-app
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: apps/ncp-contractor-app/package.json
+      - name: Install dependencies
+        run: npm install --no-audit --no-fund
+      - name: Type check
+        run: npm run typecheck
+      - name: Build production app
+        run: npm run build
