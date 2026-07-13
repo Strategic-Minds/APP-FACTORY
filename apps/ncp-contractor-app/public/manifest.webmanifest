@@ -1,0 +1,13 @@
+{
+  "name": "National Concrete Polishing Contractor App",
+  "short_name": "NCP",
+  "description": "Premium contractor presentation app for National Concrete Polishing.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#080808",
+  "theme_color": "#C9A227",
+  "orientation": "portrait-primary",
+  "categories": ["business", "productivity"],
+  "icons": []
+}
